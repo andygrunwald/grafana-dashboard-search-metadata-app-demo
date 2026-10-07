@@ -1,6 +1,42 @@
-# Grafana app plugin template
+# Search hello world plugin
 
-This template is a starting point for building an app plugin for Grafana.
+A sample app plugin that adds an **"Owner: Hello World"** badge to dashboard rows in Grafana's
+command palette (the search box in the top bar, `Cmd/Ctrl+K`). It does this through the
+`grafana/commandpalette/result-item/v1` UI extension point.
+
+The extension point isn't part of a Grafana release yet. It lives on these branches of
+[andygrunwald/grafana](https://github.com/andygrunwald/grafana):
+
+- `andygrunwald/command-palette-dashboard-tags` shows dashboard tags in the command palette
+- `andygrunwald/command-palette-result-item-extension-point` (built on the tags branch) adds the extension point
+
+The plugin receives the dashboard's `uid`, `title`, `url`, `tags` and `folderTitle` as props
+(see `src/components/DashboardOwnerBadge/DashboardOwnerBadge.tsx`). The owner is hard-coded; a real
+plugin would look it up from wherever ownership is stored.
+
+## Run it against the fork
+
+1. Build the plugin: `npm install && npm run dev`
+2. In a checkout of the fork on the extension point branch, link the plugin's `dist` folder into
+   Grafana's plugins folder and start Grafana with unsigned loading allowed for this plugin:
+
+   ```bash
+   mkdir -p data/plugins
+   ln -s /path/to/grafana-search-hello-world-plugin/dist data/plugins/andygrunwald-searchhelloworld-app
+   GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=andygrunwald-searchhelloworld-app make run
+   ```
+
+   and `yarn start` for the frontend. Don't point `GF_PATHS_PLUGINS` at `dist` itself: Grafana
+   looks for plugins in subfolders of that path and also installs its preinstalled plugins there.
+
+3. Enable the app under **Administration → Plugins and data → Plugins**. Changes to `plugin.json`
+   need a Grafana restart.
+4. Open the command palette and search for a dashboard. Each dashboard row shows its tags and the
+   owner badge.
+
+---
+
+The rest of this README is the scaffolded template documentation.
 
 ## What are Grafana app plugins?
 
