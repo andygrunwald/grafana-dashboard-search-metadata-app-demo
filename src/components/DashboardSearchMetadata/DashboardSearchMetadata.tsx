@@ -14,7 +14,8 @@ export type CommandPaletteResultItemContext = {
   uid: string;
   title: string;
   url: string;
-  tags: string[];
+  // undefined when the search source doesn't provide tags (e.g. Grafana's experimental hybrid search)
+  tags?: string[];
   folderTitle?: string;
 };
 
@@ -23,7 +24,7 @@ export function DashboardSearchMetadata({ uid, title, tags }: CommandPaletteResu
 
   return (
     <div className={styles.wrapper}>
-      {tags.length > 0 && <TagList tags={tags} displayMax={3} className={styles.tagList} />}
+      {tags && tags.length > 0 && <TagList tags={tags} displayMax={3} className={styles.tagList} />}
       <Badge text={`Owner: ${getOwnerTeam(uid)}`} color="blue" tooltip={`Owner of ${title}`} />
     </div>
   );
