@@ -17,7 +17,7 @@ export type CommandPaletteResultItemContext = {
   folderTitle?: string;
 };
 
-export function DashboardOwnerBadge({ title, tags }: CommandPaletteResultItemContext) {
+export function DashboardSearchMetadata({ title, tags }: CommandPaletteResultItemContext) {
   const styles = useStyles2(getStyles);
 
   return (

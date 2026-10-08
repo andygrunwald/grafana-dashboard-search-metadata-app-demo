@@ -1,21 +1,23 @@
-# Search hello world plugin
+# Dashboard Search Metadata (demo)
 
-A sample app plugin that extends dashboard rows in Grafana's command palette (the search box in the
-top bar, `Cmd/Ctrl+K`). Through the `grafana/commandpalette/result-item/v1` UI extension point, each
-dashboard row gets:
+**A demo plugin.** It exists to show the new `grafana/commandpalette/result-item/v1` UI extension
+point in action; it isn't meant for production use.
+
+It adds dashboard metadata to Grafana's search (the command palette: the search box in the top
+bar, `Cmd/Ctrl+K`). Each dashboard row gets:
 
 - the dashboard's **tags** (up to three, then "+ N")
 - an **"Owner: Hello World"** badge
 
-Grafana itself shows neither; without this plugin the command palette looks unchanged.
+Grafana itself shows neither; without this plugin the search looks unchanged.
 
 The extension point isn't part of a Grafana release yet. It lives on the
 `andygrunwald/command-palette-result-item-extension-point` branch of
 [andygrunwald/grafana](https://github.com/andygrunwald/grafana).
 
 The plugin receives the dashboard's `uid`, `title`, `url`, `tags` and `folderTitle` as props
-(see `src/components/DashboardOwnerBadge/DashboardOwnerBadge.tsx`). The owner is hard-coded; a real
-plugin would look it up from wherever ownership is stored.
+(see `src/components/DashboardSearchMetadata/DashboardSearchMetadata.tsx`). The owner is
+hard-coded; a real plugin would look it up from wherever ownership is stored.
 
 ## Run it against the fork
 
@@ -25,8 +27,8 @@ plugin would look it up from wherever ownership is stored.
 
    ```bash
    mkdir -p data/plugins
-   ln -s /path/to/grafana-search-hello-world-plugin/dist data/plugins/andygrunwald-searchhelloworld-app
-   GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=andygrunwald-searchhelloworld-app make run
+   ln -s /path/to/grafana-dashboard-search-metadata-app-demo/dist data/plugins/andygrunwald-dashboardsearchmetadatademo-app
+   GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=andygrunwald-dashboardsearchmetadatademo-app make run
    ```
 
    and `yarn start` for the frontend. Don't point `GF_PATHS_PLUGINS` at `dist` itself: Grafana

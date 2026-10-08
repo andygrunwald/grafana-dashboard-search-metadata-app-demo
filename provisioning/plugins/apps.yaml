@@ -1,7 +1,7 @@
 apiVersion: 1
 
 apps:
-  - type: 'andygrunwald-searchhelloworld-app'
+  - type: 'andygrunwald-dashboardsearchmetadatademo-app'
     org_id: 1
     org_name: 'andygrunwald'
     disabled: false

@@ -4,8 +4,8 @@ import { LoadingPlaceholder } from '@grafana/ui';
 import type { AppConfigProps } from './components/AppConfig/AppConfig';
 import {
   COMMAND_PALETTE_RESULT_ITEM_EXTENSION_POINT,
-  DashboardOwnerBadge,
-} from './components/DashboardOwnerBadge/DashboardOwnerBadge';
+  DashboardSearchMetadata,
+} from './components/DashboardSearchMetadata/DashboardSearchMetadata';
 
 const App = lazy(() => import('./components/App/App'));
 const LazyAppConfig = lazy(() => import('./components/AppConfig/AppConfig'));
@@ -25,8 +25,8 @@ export const plugin = new AppPlugin<{}>()
     id: 'configuration',
   })
   .addComponent({
-    title: 'Dashboard owner',
-    description: 'Shows a hello world owner on dashboard rows in the command palette',
+    title: 'Dashboard search metadata',
+    description: "Shows dashboard tags and the owning team on dashboard rows in Grafana's search",
     targets: [COMMAND_PALETTE_RESULT_ITEM_EXTENSION_POINT],
-    component: DashboardOwnerBadge,
+    component: DashboardSearchMetadata,
   });

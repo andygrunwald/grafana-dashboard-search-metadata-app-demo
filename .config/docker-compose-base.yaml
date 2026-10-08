@@ -1,7 +1,7 @@
 services:
   grafana:
     user: root
-    container_name: 'andygrunwald-searchhelloworld-app'
+    container_name: 'andygrunwald-dashboardsearchmetadatademo-app'
 
     build:
       context: .
@@ -13,13 +13,13 @@ services:
     ports:
       - 3000:3000/tcp
     volumes:
-      - ../dist:/var/lib/grafana/plugins/andygrunwald-searchhelloworld-app
+      - ../dist:/var/lib/grafana/plugins/andygrunwald-dashboardsearchmetadatademo-app
       - ../provisioning:/etc/grafana/provisioning
-      - ..:/root/andygrunwald-searchhelloworld-app
+      - ..:/root/andygrunwald-dashboardsearchmetadatademo-app
 
     environment:
       NODE_ENV: development
-      GF_LOG_FILTERS: plugin.andygrunwald-searchhelloworld-app:debug
+      GF_LOG_FILTERS: plugin.andygrunwald-dashboardsearchmetadatademo-app:debug
       GF_LOG_LEVEL: debug
       GF_DATAPROXY_LOGGING: 1
-      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: andygrunwald-searchhelloworld-app
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: andygrunwald-dashboardsearchmetadatademo-app
