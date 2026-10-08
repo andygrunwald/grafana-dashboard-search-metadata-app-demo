@@ -7,7 +7,7 @@ It adds dashboard metadata to Grafana's search (the command palette: the search 
 bar, `Cmd/Ctrl+K`). Each dashboard row gets:
 
 - the dashboard's **tags** (up to three, then "+ N")
-- an **"Owner: Hello World"** badge
+- an **owner** badge, e.g. "Owner: Payments"
 
 Grafana itself shows neither; without this plugin the search looks unchanged.
 
@@ -16,8 +16,12 @@ The extension point isn't part of a Grafana release yet. It lives on the
 [andygrunwald/grafana](https://github.com/andygrunwald/grafana).
 
 The plugin receives the dashboard's `uid`, `title`, `url`, `tags` and `folderTitle` as props
-(see `src/components/DashboardSearchMetadata/DashboardSearchMetadata.tsx`). The owner is
-hard-coded; a real plugin would look it up from wherever ownership is stored.
+(see `src/components/DashboardSearchMetadata/DashboardSearchMetadata.tsx`).
+
+The owner is made up: one of four invented teams (Platform Engineering, Payments, Observability,
+Developer Experience), picked from a hash of the dashboard UID (`src/components/DashboardSearchMetadata/owner.ts`).
+It looks random across dashboards but stays the same for a given dashboard. A real plugin would look
+the owner up from wherever ownership is stored.
 
 ## Run it against the fork
 

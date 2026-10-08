@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { Badge, TagList, useStyles2 } from '@grafana/ui';
+import { getOwnerTeam } from './owner';
 
 // Not yet part of a published @grafana/data release, so the ID and the context type are declared
 // here. Once Grafana ships them, use PluginExtensionPoints.CommandPaletteResultItem and
@@ -17,13 +18,13 @@ export type CommandPaletteResultItemContext = {
   folderTitle?: string;
 };
 
-export function DashboardSearchMetadata({ title, tags }: CommandPaletteResultItemContext) {
+export function DashboardSearchMetadata({ uid, title, tags }: CommandPaletteResultItemContext) {
   const styles = useStyles2(getStyles);
 
   return (
     <div className={styles.wrapper}>
       {tags.length > 0 && <TagList tags={tags} displayMax={3} className={styles.tagList} />}
-      <Badge text="Owner: Hello World" color="blue" tooltip={`Owner of ${title}`} />
+      <Badge text={`Owner: ${getOwnerTeam(uid)}`} color="blue" tooltip={`Owner of ${title}`} />
     </div>
   );
 }
