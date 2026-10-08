@@ -23,6 +23,16 @@ Developer Experience), picked from a hash of the dashboard UID (`src/components/
 It looks random across dashboards but stays the same for a given dashboard. A real plugin would look
 the owner up from wherever ownership is stored.
 
+## Before / after
+
+Grafana's search without the plugin (the extension point renders nothing):
+
+![Grafana search without the plugin](docs/screenshot-before.png)
+
+With the plugin: each dashboard row shows its tags and an owner team:
+
+![Grafana search with the plugin: tags and owner team per dashboard](docs/screenshot-after.png)
+
 ## Run it against the fork
 
 1. Build the plugin: `npm install && npm run dev`
