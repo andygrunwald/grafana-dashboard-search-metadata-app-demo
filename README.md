@@ -53,6 +53,11 @@ With the plugin: each dashboard row shows its tags and an owner team:
 4. Open the command palette and search for a dashboard. Each dashboard row shows its tags and the
    owner badge.
 
+**Docker and e2e tests:** `npm run server` and the CI workflow start a stock Grafana image, which
+doesn't contain the extension point yet, so the plugin renders nothing there. For the same reason
+the demo has no end-to-end tests (`npm run e2e` finds none); the extension point itself is covered by
+Grafana's own e2e tests on the branch above.
+
 ---
 
 The rest of this README is the scaffolded template documentation.
