@@ -1,14 +1,17 @@
 # Search hello world plugin
 
-A sample app plugin that adds an **"Owner: Hello World"** badge to dashboard rows in Grafana's
-command palette (the search box in the top bar, `Cmd/Ctrl+K`). It does this through the
-`grafana/commandpalette/result-item/v1` UI extension point.
+A sample app plugin that extends dashboard rows in Grafana's command palette (the search box in the
+top bar, `Cmd/Ctrl+K`). Through the `grafana/commandpalette/result-item/v1` UI extension point, each
+dashboard row gets:
 
-The extension point isn't part of a Grafana release yet. It lives on these branches of
-[andygrunwald/grafana](https://github.com/andygrunwald/grafana):
+- the dashboard's **tags** (up to three, then "+ N")
+- an **"Owner: Hello World"** badge
 
-- `andygrunwald/command-palette-dashboard-tags` shows dashboard tags in the command palette
-- `andygrunwald/command-palette-result-item-extension-point` (built on the tags branch) adds the extension point
+Grafana itself shows neither; without this plugin the command palette looks unchanged.
+
+The extension point isn't part of a Grafana release yet. It lives on the
+`andygrunwald/command-palette-result-item-extension-point` branch of
+[andygrunwald/grafana](https://github.com/andygrunwald/grafana).
 
 The plugin receives the dashboard's `uid`, `title`, `url`, `tags` and `folderTitle` as props
 (see `src/components/DashboardOwnerBadge/DashboardOwnerBadge.tsx`). The owner is hard-coded; a real
