@@ -1,5 +1,12 @@
 # Dashboard Search Metadata (demo)
 
+## Related Grafana pull requests
+
+- [grafana/grafana#134501](https://github.com/grafana/grafana/pull/134501): **Plugin extensions: Add command palette result item extension point.** The implementation this demo depends on: it adds the `grafana/commandpalette/result-item/v1` extension point. Without it, the plugin renders nothing.
+- [grafana/grafana#134500](https://github.com/grafana/grafana/pull/134500): **Command palette: Show dashboard tags in search results.** A low-key alternative in core: Grafana itself shows dashboard tags in search, without any plugin. It doesn't support custom fields like the owner.
+
+## About this demo
+
 **A demo plugin.** It exists to show the new `grafana/commandpalette/result-item/v1` UI extension
 point in action; it isn't meant for production use.
 
@@ -11,9 +18,10 @@ bar, `Cmd/Ctrl+K`). Each dashboard row gets:
 
 Grafana itself shows neither; without this plugin the search looks unchanged.
 
-The extension point isn't part of a Grafana release yet. It lives on the
-`andygrunwald/command-palette-result-item-extension-point` branch of
-[andygrunwald/grafana](https://github.com/andygrunwald/grafana).
+The extension point isn't part of a Grafana release yet; it's proposed in
+[#134501](https://github.com/grafana/grafana/pull/134501) (branch
+`andygrunwald/command-palette-result-item-extension-point` of
+[andygrunwald/grafana](https://github.com/andygrunwald/grafana)).
 
 The plugin receives the dashboard's `uid`, `title`, `url`, `tags` and `folderTitle` as props
 (see `src/components/DashboardSearchMetadata/DashboardSearchMetadata.tsx`).
